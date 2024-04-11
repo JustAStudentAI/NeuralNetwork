@@ -78,15 +78,28 @@ b2: Biases for the 10 neurons in the output layer. <br>
 It creates random weights (w1, w2) and biases (b1, b2) for both the input-to-hidden and hidden-to-output layer connections.**
 ```
 def init_params():
-    W1 = np.random.normal(size=(10, 784)) * np.sqrt(1./(784))
-    b1 = np.random.normal(size=(10, 1)) * np.sqrt(1./10)
-    W2 = np.random.normal(size=(10, 10)) * np.sqrt(1./20)
-    b2 = np.random.normal(size=(10, 1)) * np.sqrt(1./(784))
+    # Input layer size (28x28 image)
+    n_in = 784
+    # Size of the first layer (number of neurons in the first hidden layer)
+    n_hidden1 = 10
+    # Size of the second layer (number of neurons in the output layer)
+    n_hidden2 = 10
+
+    # Initialize weights and biases for the first layer
+    # Xavier initialization: mean = 0, std = sqrt(2 / (n_in + n_hidden1))
+    W1 = np.random.randn(n_hidden1, n_in) * np.sqrt(2. / (n_in + n_hidden1))
+    b1 = np.zeros((n_hidden1, 1))  # Biases can be initialized to zeros
+
+    # Initialize weights and biases for the second layer
+    # Xavier initialization: mean = 0, std = sqrt(2 / (n_hidden1 + n_hidden2))
+    W2 = np.random.randn(n_hidden2, n_hidden1) * np.sqrt(2. / (n_hidden1 + n_hidden2))
+    b2 = np.zeros((n_hidden2, 1))  # Biases can be initialized to zeros
     return W1, b1, W2, b2
 ```
+<br>
 
 
-## Rectified linear unit ( RelU )
+## Rectified Linear Unit ( RelU )
 **Goes through given matrix Z and returns the max when compared to 0,
 effectively replaces numbers <0 with 0.**
 ```
