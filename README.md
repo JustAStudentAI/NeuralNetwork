@@ -140,7 +140,9 @@ def softmax(Z):
     return A
 ```
 <br>
+<br>
 
+## Forward Propagation
 z1: Linear Combination for Hidden Layer: Computes z1 as the dot product of w1 and X, then adds b1. 
 This results in the pre-activation values for the hidden layer.
 
@@ -152,11 +154,6 @@ This gives the pre-activation values for the output layer.
 
 a2: Softmax Activation: Applies the softmax function to z2, resulting in a2, which are the output probabilities of the network. 
 Softmax ensures these probabilities sum up to 1, making the output suitable for classification tasks.
-<br>
-<br>
-<br>
-
-## Forward Propagation
 ```
 def forward_prop(w1, b1, w2, b2, X):
     z1 = w1.dot(X) + b1
