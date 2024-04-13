@@ -116,7 +116,8 @@ def ReLU(Z):
 <br>
 
 **Calculates the derivative of the Rectified Linear Unit (ReLU) activation function with respect to its input Z. 
-It returns a Boolean array that is True for elements where Z is greater than 0 and False otherwise.**
+It returns a Boolean array that is True for elements where Z is greater than 0 and False otherwise. 
+This can be multiplied, specifically by numbers.  True * num = num, False * num = 0.**
 ```
 def ReLU_derivative(Z):
     return Z > 0
