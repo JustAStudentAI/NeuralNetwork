@@ -125,7 +125,6 @@ def ReLU_derivative(Z):
 ```
 <br>
 <br>
-<br>
 
 ## Softmax:
 **The softmax function converts a vector of raw scores (often called logits) from the final layer of a neural network 
