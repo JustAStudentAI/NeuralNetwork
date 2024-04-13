@@ -2,7 +2,7 @@
 This is a neural built from scratch.
 The program's goal is to be able to identify numbers 0-9 even if they are blurry; via this neural network.
 Project was based off of Samson Zhang's youtube video building a Neural network from scratch.
-
+<br>
 <br>
 <br>
 
@@ -12,6 +12,8 @@ import numpy as np               # math tool
 import pandas as pd              # analysis tool
 import matplotlib.pyplot as plt  # plotting tool to show numbers
 ```
+<br>
+<br>
 <br>
 
 ## Getting the data read in & set up:
@@ -26,6 +28,8 @@ data = np.array(data)
 # optional print
 print(data)
 ```
+<br>
+<br>
 <br>
 
 ## Declaration and initialization of variables:
@@ -61,7 +65,7 @@ The Y data contains the actual number the image has (0-9).
 When you divide all pixel values by 255 in the dataset ( what X data has ), you're performing a normalization step where all features (pixel values, in this case) will have a similar range of values, specifically between 0 and 1. It helps speed up gradient descent, reduces the chance of getting stuck in local optima, and that a feature of a number doesn't have a disproportionate importance.
 <br> 
 <br>
-
+<br>
 
 ## Now we train the data:
 
@@ -86,18 +90,23 @@ def init_params():
     n_hidden2 = 10
 
     # Initialize weights and biases for the first layer
-    # Xavier initialization: mean = 0, std = sqrt(2 / (n_in + n_hidden1))
+    # w1 is a n_hidden1 x n_in matrix, the . after the 2 is for floating point division
     W1 = np.random.randn(n_hidden1, n_in) * np.sqrt(2. / (n_in + n_hidden1))
     b1 = np.zeros((n_hidden1, 1))  # Biases can be initialized to zeros
 
     # Initialize weights and biases for the second layer
-    # Xavier initialization: mean = 0, std = sqrt(2 / (n_hidden1 + n_hidden2))
+    # w1 is a n_hidden2 x n_hidden1 matrix, the . after the 2 is for floating point division
     W2 = np.random.randn(n_hidden2, n_hidden1) * np.sqrt(2. / (n_hidden1 + n_hidden2))
     b2 = np.zeros((n_hidden2, 1))  # Biases can be initialized to zeros
     return W1, b1, W2, b2
 ```
 <br>
 
+### What initialization is used?
+He initialization is used.  It helps avoid diminishing or exploding gradients during training by ensuring that the variance of the outputs of each layer remains controlled, thus making the network more likely to learn effectively.
+<br>
+<br>
+<br>
 
 ## Rectified Linear Unit ( RelU )
 **Goes through given matrix Z and returns the max when compared to 0,
@@ -106,6 +115,16 @@ effectively replaces numbers <0 with 0.**
 def ReLU(Z):
     return np.maximum(Z, 0)
 ```
+<br>
+
+**Calculates the derivative of the Rectified Linear Unit (ReLU) activation function with respect to its input Z. 
+It returns a Boolean array that is True for elements where Z is greater than 0 and False otherwise.**
+```
+def ReLU_derivative(Z):
+    return Z > 0
+```
+<br>
+<br>
 <br>
 
 ## Softmax:
@@ -122,11 +141,7 @@ def softmax(Z):
     A = np.exp(Z) / np.sum(np.exp(Z), axis=0)
     return A
 ```
-
-
-
-
-
+<br>
 
 z1: Linear Combination for Hidden Layer: Computes z1 as the dot product of w1 and X, then adds b1. 
 This results in the pre-activation values for the hidden layer.
@@ -139,8 +154,11 @@ This gives the pre-activation values for the output layer.
 
 a2: Softmax Activation: Applies the softmax function to z2, resulting in a2, which are the output probabilities of the network. 
 Softmax ensures these probabilities sum up to 1, making the output suitable for classification tasks.
+<br>
+<br>
+<br>
 
-
+## Forward Propagation
 ```
 def forward_prop(w1, b1, w2, b2, X):
     z1 = w1.dot(X) + b1
@@ -150,23 +168,11 @@ def forward_prop(w1, b1, w2, b2, X):
 
     return z1, a1, z2, a2
 ```
+<br>
+<br>
+<br>
 
-
-
-
-
-Calculates the derivative of the Rectified Linear Unit (ReLU) activation function with respect to its input Z. 
-It returns a Boolean array that is True for elements where Z is greater than 0 and False otherwise.
-
-```
-def ReLU_derivative(Z):
-    return Z > 0
-```
-
-
-
-
-
+## One Hot
 Converts a 1D array of integer labels (Y) into a 2D one-hot encoded matrix, 
 where each row corresponds to a class and each column to a sample, with 1 indicating the presence of a class for a sample.
 
@@ -192,7 +198,7 @@ and the element's position in Y as a row index, then places a 1 in the one_hot_Y
     ```
 
 
-
+```
 def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
     one_hot_Y = one_hot(Y)
     dZ2 = A2 - one_hot_Y
@@ -202,22 +208,25 @@ def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
     dW1 = 1 / m * dZ1.dot(X.T)
     db1 = 1 / m * np.sum(dZ1, 1)
     return dW1, db1, dW2, db2
+```
 
-
+```
 def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha):
     W1 -= alpha * dW1
     b1 -= alpha * np.reshape(db1, (10, 1))
     W2 -= alpha * dW2
     b2 -= alpha * np.reshape(db2, (10, 1))
     return W1, b1, W2, b2
+```
 
-
+```
 def make_predictions(X, W1, b1, W2, b2):
     _, _, _, A2 = forward_prop(W1, b1, W2, b2, X)
     predictions = get_predictions(A2)
     return predictions
+```
 
-
+```
 def test_prediction(index, W1, b1, W2, b2):
     current_image = X_train[:, index, None]
     prediction = make_predictions(X_train[:, index, None], W1, b1, W2, b2)
@@ -229,15 +238,20 @@ def test_prediction(index, W1, b1, W2, b2):
     plt.gray()
     plt.imshow(current_image, interpolation='nearest')
     plt.show()
+```
 
-
+```
 def get_predictions(A2):
     return np.argmax(A2, 0)
+```
 
+```
 def get_accuracy(predictions, Y):
     print(predictions, Y)
     return np.sum(predictions == Y) / Y.size
+```
 
+```
 def gradient_descent(X, Y, alpha, iterations):
     W1, b1, W2, b2 = init_params()
     for i in range(iterations):
@@ -250,7 +264,7 @@ def gradient_descent(X, Y, alpha, iterations):
             predictions = get_predictions(A2)
             print(get_accuracy(predictions, Y))
     return W1, b1, W2, b2
-
+```
 
 
 
@@ -276,7 +290,7 @@ def test_prediction(index, W1, b1, W2, b2):
     plt.show()
 
 
-
+```
 test_prediction(0, W1, b1, W2, b2)
 test_prediction(1, W1, b1, W2, b2)
 test_prediction(2, W1, b1, W2, b2)
@@ -287,3 +301,4 @@ test_prediction(6, W1, b1, W2, b2)
 test_prediction(7, W1, b1, W2, b2)
 test_prediction(8, W1, b1, W2, b2)
 test_prediction(9, W1, b1, W2, b2)
+```
