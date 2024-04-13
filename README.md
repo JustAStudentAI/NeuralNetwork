@@ -14,7 +14,6 @@ import matplotlib.pyplot as plt  # plotting tool to show numbers
 ```
 <br>
 <br>
-<br>
 
 ## Getting the data read in & set up:
 ```
@@ -28,7 +27,6 @@ data = np.array(data)
 # optional print
 print(data)
 ```
-<br>
 <br>
 <br>
 
@@ -167,7 +165,6 @@ def forward_prop(w1, b1, w2, b2, X):
 
     return z1, a1, z2, a2
 ```
-<br>
 <br>
 <br>
 
