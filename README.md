@@ -126,13 +126,13 @@ def ReLU_derivative(Z):
 <br>
 
 ## Softmax:
-**The softmax function converts a vector of raw scores (often called logits) from the final layer of a neural network 
+The softmax function converts a vector of raw scores (often called logits) from the final layer of a neural network 
 into probabilities by performing two main steps: <br> <br>
     Exponentiation: It takes the exponential (e raised to the power) of each score. <br>
     This step ensures that all output values are non-negative. Since exponential functions grow rapidly, 
     larger scores become significantly larger than smaller or negative scores, amplifying differences between them. <br> <br>
     Normalization: It then divides each exponentiated score by the sum of all exponentiated scores in the vector. 
-    This step ensures that all the output values are between 0 and 1 and that their sum equals 1.**
+    This step ensures that all the output values are between 0 and 1 and that their sum equals 1.
 ```
 def softmax(Z):
     Z -= np.max(Z, axis=0)  # Subtract max value for numerical stability
@@ -143,8 +143,17 @@ def softmax(Z):
 <br>
 
 ## Forward Propagation
+
+### What are the parameters?
+w1: Weight 1 <br>
+b1: Bias 2  <br>
+w2: Weight 2  <br>
+b2: Bias 2  <br>
+X: Input   <br>
+
+### What are the variables in the function?
 z1: Linear Combination for Hidden Layer: Computes z1 as the dot product of w1 and X, then adds b1. 
-This results in the pre-activation values for the hidden layer.
+This results in the pre-activation values for the hidden layer. <br>
 
 a1: ReLU Activation: Applies the ReLU function to z1 to get a1, the activated values for the hidden layer. 
 ReLU introduces non-linearity, turning negative values to 0 while keeping positive values unchanged.
