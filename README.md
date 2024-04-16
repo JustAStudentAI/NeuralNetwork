@@ -106,26 +106,33 @@ def init_params():
     n_in = 784
     # Size of the first layer (number of neurons in the first hidden layer)
     n_hidden1 = 30
-    # Size of the out layer
+    # Size of the output layer
     output = 10
 
     # Initialize weights and biases for the first layer
-    # w1 is a n_hidden1 x n_in matrix, the . after the 2 is for floating point division
-    W1 = np.random.randn(n_hidden1, n_in) * np.sqrt(2. / (n_in + n_hidden1))
+    # He initialization: only consider fan-in (n_in)
+    W1 = np.random.randn(n_hidden1, n_in) * np.sqrt(2. / n_in)
     b1 = np.zeros((n_hidden1, 1))  # Biases can be initialized to zeros
 
     # Initialize weights and biases for the second layer
-    # w1 is a output x n_hidden1 matrix, the . after the 2 is for floating point division
-    W2 = np.random.randn(output, n_hidden1) * np.sqrt(2. / (n_hidden1 + output))
+    # He initialization: only consider fan-in (n_hidden1)
+    W2 = np.random.randn(output, n_hidden1) * np.sqrt(2. / n_hidden1)
     b2 = np.zeros((output, 1))  # Biases can be initialized to zeros
+
     return W1, b1, W2, b2
 ```
 <br>
 
 ### What initialization is used?
 He initialization is used.  It helps avoid diminishing or exploding gradients during training by ensuring that the variance of the outputs of each layer remains controlled, thus making the network more likely to learn effectively.  
-Note: This was a random choice to use HE; multiplying by .05 instead would result in a 1% loss of accuracy compared to HE initialization.
+Note: This was a random choice to use HE; multiplying by .05 instead would result in a ~2% loss of accuracy compared to HE initialization.
+
+More information: https://openaccess.thecvf.com/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf
 <br>
+<br>
+<p align="center">
+  <img width="318" alt="Screenshot 2024-04-15 at 10 16 57 PM" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/8b7884ad-c553-4883-ad82-28dbe02ca92c">
+</p>
 <br>
 <br>
 
@@ -136,6 +143,10 @@ effectively replaces numbers <0 with 0.**
 def ReLU(Z):
     return np.maximum(Z, 0)
 ```
+<br>
+<p align="center">
+  <img width="397" alt="Screenshot 2024-04-15 at 10 19 04 PM" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/2ee4aa11-826b-4b3c-938c-691bebb30977">
+</p>
 <br>
 
 **Calculates the derivative of the Rectified Linear Unit (ReLU) activation function with respect to its input Z. 
