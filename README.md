@@ -1,7 +1,23 @@
 # NeuralNetwork
-This is a neural built from scratch.
-The program's goal is to be able to identify numbers 0-9 even if they are blurry; via this neural network.
+This is a neural built from scratch, the purpose is to identify numbers 0-9 from a given image.  I used the MNIST dataset for this project, referenced as "train.csv". 
 Project was based off of Samson Zhang's youtube video building a Neural network from scratch.
+<br>
+<br>
+<p align="center">
+  <img width="697" alt="Screenshot 2024-04-15 at 8 53 17 PM" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/04a0ea34-7b62-4404-ac9e-796cd56be081">
+</p>
+
+
+<br>
+<br>
+## Model Architecture
+
+The neural network is designed with the following architecture:
+- **Input Layer:** 784 neurons, representing a 28x28 pixel image with a number 0-9 in it.
+- **Hidden Layer:** A single hidden layer with 30 neurons, utilizing ReLU activation functions to introduce non-linearity.
+- **Output Layer:** 10 neurons, representing 0-9 using a softmax activation function for multi-class classification.
+
+This configuration allows the model to learn complex patterns efficiently, tailored to the specific demands of the dataset.
 <br>
 <br>
 <br>
@@ -58,6 +74,12 @@ _,m_train = X_train.shape
 Images are represented digitally with pixel values ranging from 0 to 255, indicating the intensity of light or color. This is what the X data contains.  
 The Y data contains the actual number the image has (0-9).
 <br>
+<br>
+<p align="center">
+    <img width="729" alt="Screenshot 2024-04-15 at 9 23 55 PM" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/aaa75673-954a-46a5-a1a0-661f914b2dea">
+</p>
+<br>
+<br>
 
 ### Why do we divide the X data sets by 255?
 When you divide all pixel values by 255 in the dataset ( what X data has ), you're performing a normalization step where all features (pixel values, in this case) will have a similar range of values, specifically between 0 and 1. It helps speed up gradient descent, reduces the chance of getting stuck in local optima, and that a feature of a number doesn't have a disproportionate importance.
@@ -83,9 +105,9 @@ def init_params():
     # Input layer size (28x28 image)
     n_in = 784
     # Size of the first layer (number of neurons in the first hidden layer)
-    n_hidden1 = 10
-    # Size of the second layer (number of neurons in the output layer)
-    n_hidden2 = 10
+    n_hidden1 = 30
+    # Size of the out layer
+    output = 10
 
     # Initialize weights and biases for the first layer
     # w1 is a n_hidden1 x n_in matrix, the . after the 2 is for floating point division
@@ -93,15 +115,16 @@ def init_params():
     b1 = np.zeros((n_hidden1, 1))  # Biases can be initialized to zeros
 
     # Initialize weights and biases for the second layer
-    # w1 is a n_hidden2 x n_hidden1 matrix, the . after the 2 is for floating point division
-    W2 = np.random.randn(n_hidden2, n_hidden1) * np.sqrt(2. / (n_hidden1 + n_hidden2))
-    b2 = np.zeros((n_hidden2, 1))  # Biases can be initialized to zeros
+    # w1 is a output x n_hidden1 matrix, the . after the 2 is for floating point division
+    W2 = np.random.randn(output, n_hidden1) * np.sqrt(2. / (n_hidden1 + output))
+    b2 = np.zeros((output, 1))  # Biases can be initialized to zeros
     return W1, b1, W2, b2
 ```
 <br>
 
 ### What initialization is used?
-He initialization is used.  It helps avoid diminishing or exploding gradients during training by ensuring that the variance of the outputs of each layer remains controlled, thus making the network more likely to learn effectively.
+He initialization is used.  It helps avoid diminishing or exploding gradients during training by ensuring that the variance of the outputs of each layer remains controlled, thus making the network more likely to learn effectively.  
+Note: This was a random choice to use HE; multiplying by .05 instead would result in a 1% loss of accuracy compared to HE initialization.
 <br>
 <br>
 <br>
@@ -216,7 +239,7 @@ def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
 ```
 def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha):
     W1 -= alpha * dW1
-    b1 -= alpha * np.reshape(db1, (10, 1))
+    b1 -= alpha * np.reshape(db1, (30, 1))
     W2 -= alpha * dW2
     b2 -= alpha * np.reshape(db2, (10, 1))
     return W1, b1, W2, b2
