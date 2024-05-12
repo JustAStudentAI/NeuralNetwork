@@ -10,6 +10,7 @@ Project was based off of Samson Zhang's youtube video building a Neural network 
 
 <br>
 <br>
+
 ## Model Architecture
 
 The neural network is designed with the following architecture:
@@ -173,6 +174,9 @@ def softmax(Z):
     A = np.exp(Z) / np.sum(np.exp(Z), axis=0)
     return A
 ```
+<p align="center">
+ <img width="500" alt="Screenshot 2024-04-15 at 10 19 04 PM" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/126d2562-9d82-436f-bc79-6c388f45c9bb">
+</p>
 <br>
 <br>
 
@@ -206,6 +210,9 @@ def forward_prop(w1, b1, w2, b2, X):
 
     return z1, a1, z2, a2
 ```
+<p align="center">
+ <img width="400" alt="Screenshot 2024-04-15 at 10 19 04 PM" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/f8186135-fd80-4637-af79-d9fe3e1b380a">
+</p>
 <br>
 <br>
 
@@ -217,22 +224,10 @@ where each row corresponds to a class and each column to a sample, with 1 indica
 def one_hot(Y):
     # Creates 2d array of 0's
     one_hot_Y = np.zeros((Y.size, Y.max() + 1))
-```
-np.arange(Y.size): This creates an array of indices for each element in Y. For example, if Y has 5 elements, np.arange(Y.size) produces [0, 1, 2, 3, 4]. 
-These represent the row indices in the one_hot_Y matrix where we want to set values.
-
-Y: This is the array of labels you want to one-hot encode. Each value in Y specifies the column index in the one_hot_Y 
-matrix where a 1 should be placed for the corresponding row.
-    
-one_hot_Y[np.arange(Y.size), Y] = 1: This operation simultaneously selects a row and a column in the one_hot_Y matrix 
-and sets that position to 1. It effectively goes through each element in Y, uses the element's value as a column index, 
-and the element's position in Y as a row index, then places a 1 in the one_hot_Y matrix at that row and column.
-    ```
     one_hot_Y[np.arange(Y.size), Y] = 1
-    # Transpose
     one_hot_Y = one_hot_Y.T
     return one_hot_Y
-    ```
+```
 
 
 ```
@@ -304,16 +299,16 @@ def gradient_descent(X, Y, alpha, iterations):
 ```
 
 
-
+```
 W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.10, 500)
-
-
+```
+```
 def make_predictions(X, W1, b1, W2, b2):
     _, _, _, A2 = forward_prop(W1, b1, W2, b2, X)
     predictions = get_predictions(A2)
     return predictions
-
-
+```
+```
 def test_prediction(index, W1, b1, W2, b2):
     current_image = X_train[:, index, None]
     prediction = make_predictions(X_train[:, index, None], W1, b1, W2, b2)
@@ -325,7 +320,7 @@ def test_prediction(index, W1, b1, W2, b2):
     plt.gray()
     plt.imshow(current_image, interpolation='nearest')
     plt.show()
-
+```
 
 ```
 test_prediction(0, W1, b1, W2, b2)
