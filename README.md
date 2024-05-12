@@ -181,6 +181,7 @@ def softmax(Z):
 <br>
 
 ## Forward Propagation
+Input data is passed through a neural network, layer by layer, to generate output. This output is then used to calculate the error of the model during training.
 
 ### What are the parameters?
 w1: Weight 1 <br>
@@ -210,9 +211,24 @@ def forward_prop(w1, b1, w2, b2, X):
 
     return z1, a1, z2, a2
 ```
-<p align="center">
- <img width="400" alt="Screenshot 2024-04-15 at 10 19 04 PM" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/f8186135-fd80-4637-af79-d9fe3e1b380a">
-</p>
+<br>
+<br>
+
+
+## Backward Propagation
+Calculates the error from the output and distributes it back through the network layers. This helps in adjusting the model's parameters to reduce errors and improve accuracy during learning.
+```
+def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
+    one_hot_Y = one_hot(Y)
+    dZ2 = A2 - one_hot_Y
+    dW2 = 1 / m * dZ2.dot(A1.T)
+    db2 = 1 / m * np.sum(dZ2, 1)
+    dZ1 = W2.T.dot(dZ2) * ReLU_derivative(Z1)
+    dW1 = 1 / m * dZ1.dot(X.T)
+    db1 = 1 / m * np.sum(dZ1, 1)
+    return dW1, db1, dW2, db2
+```
+
 <br>
 <br>
 
@@ -230,17 +246,6 @@ def one_hot(Y):
 ```
 
 
-```
-def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
-    one_hot_Y = one_hot(Y)
-    dZ2 = A2 - one_hot_Y
-    dW2 = 1 / m * dZ2.dot(A1.T)
-    db2 = 1 / m * np.sum(dZ2, 1)
-    dZ1 = W2.T.dot(dZ2) * ReLU_derivative(Z1)
-    dW1 = 1 / m * dZ1.dot(X.T)
-    db1 = 1 / m * np.sum(dZ1, 1)
-    return dW1, db1, dW2, db2
-```
 
 ```
 def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha):
@@ -251,6 +256,7 @@ def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha):
     return W1, b1, W2, b2
 ```
 
+## Predictions
 ```
 def make_predictions(X, W1, b1, W2, b2):
     _, _, _, A2 = forward_prop(W1, b1, W2, b2, X)
@@ -299,15 +305,19 @@ def gradient_descent(X, Y, alpha, iterations):
 ```
 
 
+
 ```
 W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.10, 500)
 ```
+
+
 ```
 def make_predictions(X, W1, b1, W2, b2):
     _, _, _, A2 = forward_prop(W1, b1, W2, b2, X)
     predictions = get_predictions(A2)
     return predictions
 ```
+
 ```
 def test_prediction(index, W1, b1, W2, b2):
     current_image = X_train[:, index, None]
@@ -322,6 +332,7 @@ def test_prediction(index, W1, b1, W2, b2):
     plt.show()
 ```
 
+## Show prediction visuals
 ```
 test_prediction(0, W1, b1, W2, b2)
 test_prediction(1, W1, b1, W2, b2)
