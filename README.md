@@ -138,7 +138,7 @@ More information: https://openaccess.thecvf.com/content_iccv_2015/papers/He_Delv
 <br>
 
 ## Rectified Linear Unit ( RelU )
-**Goes through given matrix Z and returns the max when compared to 0,
+Goes through given matrix Z and returns the max when compared to 0,
 effectively replaces numbers <0 with 0.**
 ```
 def ReLU(Z):
@@ -150,7 +150,7 @@ def ReLU(Z):
 </p>
 <br>
 
-**Calculates the derivative of the Rectified Linear Unit (ReLU) activation function with respect to its input Z. 
+Calculates the derivative of the Rectified Linear Unit (ReLU) activation function with respect to its input Z. 
 It returns a Boolean array that is True for elements where Z is greater than 0 and False otherwise. 
 This can be multiplied, specifically by numbers.  True * num = num, False * num = 0.**
 ```
