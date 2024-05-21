@@ -244,9 +244,11 @@ def one_hot(Y):
     one_hot_Y = one_hot_Y.T
     return one_hot_Y
 ```
+<p align="center">
+ <img width="500" alt="Screenshot 2024-04-15 at 10 19 04 PM" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/b408530e-c935-4336-b417-aafe3ae717b2>
+</p>
 
-
-
+## Update parameters
 ```
 def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha):
     W1 -= alpha * dW1
@@ -255,15 +257,23 @@ def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha):
     b2 -= alpha * np.reshape(db2, (10, 1))
     return W1, b1, W2, b2
 ```
+### What is alpha?
+Alpha, also known as the learning rate, is a hyperparameter that determines the step size at each iteration of the gradient descent algorithm.
+<br>
+<br>
 
 ## Predictions
+Gets the prediction for given parameters, does this by inputting it into forward prop and using the result from the output layer (0-9).
 ```
 def make_predictions(X, W1, b1, W2, b2):
     _, _, _, A2 = forward_prop(W1, b1, W2, b2, X)
     predictions = get_predictions(A2)
     return predictions
 ```
-
+```
+def get_predictions(A2):
+    return np.argmax(A2, 0)
+```
 ```
 def test_prediction(index, W1, b1, W2, b2):
     current_image = X_train[:, index, None]
@@ -277,18 +287,15 @@ def test_prediction(index, W1, b1, W2, b2):
     plt.imshow(current_image, interpolation='nearest')
     plt.show()
 ```
-
-```
-def get_predictions(A2):
-    return np.argmax(A2, 0)
-```
-
 ```
 def get_accuracy(predictions, Y):
     print(predictions, Y)
     return np.sum(predictions == Y) / Y.size
 ```
+<br>
+<br>
 
+## Gradient descent
 ```
 def gradient_descent(X, Y, alpha, iterations):
     W1, b1, W2, b2 = init_params()
@@ -297,51 +304,24 @@ def gradient_descent(X, Y, alpha, iterations):
         dW1, db1, dW2, db2 = backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y)
         W1, b1, W2, b2 = update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha)
 
-        if i % 10 == 0:
+        # print every 20th iteration
+        if i % 20 == 0:
             print("Iteration: ", i)
             predictions = get_predictions(A2)
             print(get_accuracy(predictions, Y))
     return W1, b1, W2, b2
 ```
-
-
-
+### Running the netowrk
+Calls gradient descent, passes the data sets with alpha = 0.10 and 500 iterations.
 ```
 W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.10, 500)
 ```
-
-
-```
-def make_predictions(X, W1, b1, W2, b2):
-    _, _, _, A2 = forward_prop(W1, b1, W2, b2, X)
-    predictions = get_predictions(A2)
-    return predictions
-```
-
-```
-def test_prediction(index, W1, b1, W2, b2):
-    current_image = X_train[:, index, None]
-    prediction = make_predictions(X_train[:, index, None], W1, b1, W2, b2)
-    label = Y_train[index]
-    print("Prediction: ", prediction)
-    print("Label: ", label)
-
-    current_image = current_image.reshape((28, 28)) * 255
-    plt.gray()
-    plt.imshow(current_image, interpolation='nearest')
-    plt.show()
-```
+<br>
+<br>
 
 ## Show prediction visuals
 ```
+# shows predictions, add more if wanted 
 test_prediction(0, W1, b1, W2, b2)
 test_prediction(1, W1, b1, W2, b2)
-test_prediction(2, W1, b1, W2, b2)
-test_prediction(3, W1, b1, W2, b2)
-test_prediction(4, W1, b1, W2, b2)
-test_prediction(5, W1, b1, W2, b2)
-test_prediction(6, W1, b1, W2, b2)
-test_prediction(7, W1, b1, W2, b2)
-test_prediction(8, W1, b1, W2, b2)
-test_prediction(9, W1, b1, W2, b2)
 ```
