@@ -247,6 +247,8 @@ def one_hot(Y):
 <p align="center">
  <img width="500" alt="Screenshot 2024-04-15 at 10 19 04 PM" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/b408530e-c935-4336-b417-aafe3ae717b2>
 </p>
+<br>
+<br>
 
 ## Update parameters
 ```
@@ -257,23 +259,30 @@ def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha):
     b2 -= alpha * np.reshape(db2, (10, 1))
     return W1, b1, W2, b2
 ```
+
 ### What is alpha?
 Alpha, also known as the learning rate, is a hyperparameter that determines the step size at each iteration of the gradient descent algorithm.
 <br>
 <br>
+<br>
 
 ## Predictions
-Gets the prediction for given parameters, does this by inputting it into forward prop and using the result from the output layer (0-9).
+The numpy.argmax() function returns indices of the max element of the array in a particular axis. This results in the return value being 0-9.
+```
+def get_predictions(A2):
+    return np.argmax(A2, 0)
+```
+
+
+Gets the prediction for given parameters, does this by inputting it into forward prop and using get_predictions to get the prediction.
 ```
 def make_predictions(X, W1, b1, W2, b2):
     _, _, _, A2 = forward_prop(W1, b1, W2, b2, X)
     predictions = get_predictions(A2)
     return predictions
 ```
-```
-def get_predictions(A2):
-    return np.argmax(A2, 0)
-```
+
+Prints out the prediction, actual number, as well as the image used from the MNIST dataset.
 ```
 def test_prediction(index, W1, b1, W2, b2):
     current_image = X_train[:, index, None]
@@ -287,6 +296,8 @@ def test_prediction(index, W1, b1, W2, b2):
     plt.imshow(current_image, interpolation='nearest')
     plt.show()
 ```
+
+
 ```
 def get_accuracy(predictions, Y):
     print(predictions, Y)
@@ -296,6 +307,13 @@ def get_accuracy(predictions, Y):
 <br>
 
 ## Gradient descent
+### What is gradient descent?
+Gradient Descent is an optimization algorithm for finding a local minimum of a differentiable function. 
+Gradient descent in machine learning is simply used to find the values of a function's parameters (coefficients) that minimize a cost function as far as possible.
+
+### What is a cost function?
+A Cost Function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting
+
 ```
 def gradient_descent(X, Y, alpha, iterations):
     W1, b1, W2, b2 = init_params()
@@ -311,6 +329,7 @@ def gradient_descent(X, Y, alpha, iterations):
             print(get_accuracy(predictions, Y))
     return W1, b1, W2, b2
 ```
+
 ### Running the netowrk
 Calls gradient descent, passes the data sets with alpha = 0.10 and 500 iterations.
 ```
