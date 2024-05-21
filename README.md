@@ -4,7 +4,7 @@ Project was based off of Samson Zhang's youtube video building a Neural network 
 <br>
 <br>
 <p align="center">
-  <img width="697" alt="Screenshot 2024-04-15 at 8 53 17 PM" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/04a0ea34-7b62-4404-ac9e-796cd56be081">
+  <img width="697" alt="Neural net" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/04a0ea34-7b62-4404-ac9e-796cd56be081">
 </p>
 
 
@@ -77,7 +77,7 @@ The Y data contains the actual number the image has (0-9).
 <br>
 <br>
 <p align="center">
-    <img width="729" alt="Screenshot 2024-04-15 at 9 23 55 PM" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/aaa75673-954a-46a5-a1a0-661f914b2dea">
+    <img width="729" alt="data set" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/aaa75673-954a-46a5-a1a0-661f914b2dea">
 </p>
 <br>
 <br>
@@ -132,7 +132,7 @@ More information: https://openaccess.thecvf.com/content_iccv_2015/papers/He_Delv
 <br>
 <br>
 <p align="center">
-  <img width="318" alt="Screenshot 2024-04-15 at 10 16 57 PM" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/8b7884ad-c553-4883-ad82-28dbe02ca92c">
+  <img width="318" alt="HE ini" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/8b7884ad-c553-4883-ad82-28dbe02ca92c">
 </p>
 <br>
 <br>
@@ -146,13 +146,13 @@ def ReLU(Z):
 ```
 <br>
 <p align="center">
-  <img width="397" alt="Screenshot 2024-04-15 at 10 19 04 PM" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/2ee4aa11-826b-4b3c-938c-691bebb30977">
+  <img width="397" alt="relU" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/2ee4aa11-826b-4b3c-938c-691bebb30977">
 </p>
 <br>
 
 Calculates the derivative of the Rectified Linear Unit (ReLU) activation function with respect to its input Z. 
 It returns a Boolean array that is True for elements where Z is greater than 0 and False otherwise. 
-This can be multiplied, specifically by numbers.  True * num = num, False * num = 0.**
+This can be multiplied, specifically by numbers.  True * num = num, False * num = 0.
 ```
 def ReLU_derivative(Z):
     return Z > 0
@@ -175,7 +175,7 @@ def softmax(Z):
     return A
 ```
 <p align="center">
- <img width="500" alt="Screenshot 2024-04-15 at 10 19 04 PM" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/126d2562-9d82-436f-bc79-6c388f45c9bb">
+ <img width="500" alt="softmax" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/126d2562-9d82-436f-bc79-6c388f45c9bb">
 </p>
 <br>
 <br>
@@ -245,7 +245,7 @@ def one_hot(Y):
     return one_hot_Y
 ```
 <p align="center">
- <img width="500" alt="Screenshot 2024-04-15 at 10 19 04 PM" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/b408530e-c935-4336-b417-aafe3ae717b2>
+ <img width="500" alt="one hot" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/b408530e-c935-4336-b417-aafe3ae717b2>
 </p>
 <br>
 <br>
@@ -310,9 +310,15 @@ def get_accuracy(predictions, Y):
 ### What is gradient descent?
 Gradient Descent is an optimization algorithm for finding a local minimum of a differentiable function. 
 Gradient descent in machine learning is simply used to find the values of a function's parameters (coefficients) that minimize a cost function as far as possible.
+<p align="center">
+ <img width="400" alt="grad des" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/7b9d385d-98c9-4016-b58f-5b8024c36476>
+</p>
 
 ### What is a cost function?
 A Cost Function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting
+<p align="center">
+ <img width="400" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/169a7dba-180b-4dcd-a1b8-e011320fa98b>
+</p>
 
 ```
 def gradient_descent(X, Y, alpha, iterations):
