@@ -317,7 +317,7 @@ Gradient descent in machine learning is simply used to find the values of a func
 ### What is a cost function?
 A Cost Function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting
 <p align="center">
- <img width="400" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/169a7dba-180b-4dcd-a1b8-e011320fa98b>
+ <img width="400" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/d43e2c11-cb76-49d9-b493-5a6b259afc05>
 </p>
 
 ```
