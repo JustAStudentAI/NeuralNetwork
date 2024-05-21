@@ -1,6 +1,6 @@
 # NeuralNetwork
 This is a neural built from scratch, the purpose is to identify numbers 0-9 from a given image.  I used the MNIST dataset for this project, referenced as "train.csv". 
-Project was based off of Samson Zhang's youtube video building a Neural network from scratch.
+Project was based off of Samson Zhang's youtube video building a Neural network from scratch. https://www.youtube.com/watch?v=w8yWXqWQYmU
 <br>
 <br>
 <p align="center">
@@ -319,6 +319,11 @@ A Cost Function is used to measure just how wrong the model is in finding a rela
 <p align="center">
  <img width="400" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/d43e2c11-cb76-49d9-b493-5a6b259afc05>
 </p>
+<br>
+More information: <br>
+https://builtin.com/data-science/gradient-descent <br> 
+https://www.simplilearn.com/tutorials/machine-learning-tutorial/cost-function-in-machine-learning <br>
+<br>
 
 ```
 def gradient_descent(X, Y, alpha, iterations):
