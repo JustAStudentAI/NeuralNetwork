@@ -317,37 +317,47 @@ Gradient descent in machine learning is simply used to find the values of a func
  <img width="400" alt="grad des" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/7b9d385d-98c9-4016-b58f-5b8024c36476>
 </p>
 
-### What is a cost function?
-A Cost Function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting
-<p align="center">
- <img width="400" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/d43e2c11-cb76-49d9-b493-5a6b259afc05>
-</p>
-<br>
-More information: <br>
-https://builtin.com/data-science/gradient-descent <br> 
-https://www.simplilearn.com/tutorials/machine-learning-tutorial/cost-function-in-machine-learning <br>
-<br>
-
 ```
 def gradient_descent(X, Y, alpha, iterations):
     W1, b1, W2, b2 = init_params()
+    history = {'loss': [], 'accuracy': []}
+    
     for i in range(iterations):
         Z1, A1, Z2, A2 = forward_prop(W1, b1, W2, b2, X)
         dW1, db1, dW2, db2 = backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y)
         W1, b1, W2, b2 = update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha)
 
-        # print every 20th iteration
+        # print some data every 20th iteration
         if i % 20 == 0:
-            print("Iteration: ", i)
-            predictions = get_predictions(A2)
-            print(get_accuracy(predictions, Y))
-    return W1, b1, W2, b2
+            loss = -np.mean(np.log(A2[Y, np.arange(m_train)]))
+            accuracy = get_accuracy(get_predictions(A2), Y)
+            history['loss'].append(loss)
+            history['accuracy'].append(accuracy)
+            print(f"Iteration: {i}, Loss: {loss:.4f}, Accuracy: {accuracy:.4f}")
+    
+    return W1, b1, W2, b2, history
 ```
+<p align="center">
+ <img width="400" alt="iteration ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/06730932-52bc-49b6-865c-ac485471f337>
+</p>
+<br>
 
-### Running the netowrk
+### What is a loss / cost function?
+A loss / cost function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting
+<p align="center">
+ <img width="400" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/d43e2c11-cb76-49d9-b493-5a6b259afc05>
+</p>
+<br>
+
+More information: <br>
+https://builtin.com/data-science/gradient-descent <br> 
+https://www.simplilearn.com/tutorials/machine-learning-tutorial/cost-function-in-machine-learning <br>
+<br>
+
+### Training the model
 Calls gradient descent, passes the data sets with alpha = 0.10 and 500 iterations.
 ```
-W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.10, 500)
+W1, b1, W2, b2, history = gradient_descent(X_train, Y_train, 0.10, 531)
 ```
 <br>
 <br>
@@ -358,3 +368,62 @@ W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.10, 500)
 test_prediction(0, W1, b1, W2, b2)
 test_prediction(1, W1, b1, W2, b2)
 ```
+<p align="center">
+ <img width="400" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/1c9a3a56-e512-4966-9939-ebe1ff3c0e1a>
+</p>
+<p align="center">
+ <img width="400" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/b5dc9e37-b1ec-42d2-ac8b-00f305a0d347>
+</p>
+<br>
+<br>
+
+## Visualize loss and accuracy
+```
+def plot_history(history):
+    epochs = range(1, len(history['loss']) + 1)
+    
+    plt.figure(figsize=(14, 5))
+    plt.subplot(1, 2, 1)
+    plt.plot(epochs, history['loss'], label='Training Loss')
+    plt.title('Training Loss over Epochs')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    plt.legend()
+
+    plt.subplot(1, 2, 2)
+    plt.plot(epochs, history['accuracy'], label='Training Accuracy')
+    plt.title('Training Accuracy over Epochs')
+    plt.xlabel('Epochs')
+    plt.ylabel('Accuracy')
+    plt.legend()
+    
+    plt.show()
+
+plot_history(history)
+```
+<p align="center">
+ <img width="400" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/de7561ed-0cc2-4f5c-8e03-08c7fda7c741>
+</p>
+<br>
+<br>
+
+## Confusion Matrix
+```
+def plot_confusion_matrix(Y_true, Y_pred, class_names):
+    cm = confusion_matrix(Y_true, Y_pred)
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=class_names, yticklabels=class_names)
+    plt.xlabel('Predicted')
+    plt.ylabel('True')
+    plt.title('Confusion Matrix')
+    plt.show()
+
+Y_dev_pred = make_predictions(X_dev, W1, b1, W2, b2)
+
+class_names = [str(i) for i in range(10)]
+plot_confusion_matrix(Y_dev, Y_dev_pred, class_names)
+```
+<p align="center">
+ <img width="400" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/76b22eb3-8050-427e-9d5f-eabab4fcde5e>
+</p>
+
