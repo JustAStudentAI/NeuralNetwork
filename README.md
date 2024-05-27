@@ -35,6 +35,10 @@ from sklearn.metrics import confusion_matrix
 import seaborn as sns
 ```
 <br>
+
+### What is each import used for?
+to be finished~~~~~~~~~~
+<br>
 <br>
 
 ## Getting the data read in & set up:
@@ -47,6 +51,19 @@ data = np.array(data)
 # optional print
 # print(data)
 ```
+<br>
+
+### What is MNIST ( the dataset )?
+The MNIST database ( Modified National Institute of Standards and Technology database ) is a large database of handwritten digits that is commonly used for training various image processing systems. It contains 60,000 training images and 10,000 testing images, 
+and is also widely used for training and testing in the field of machine learning.  ( wikipedia )
+<br>
+<br>
+<p align="center">
+    <img width="700" alt="data set" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/f8a922d7-b548-44d7-9da7-3a22f517c081> <br>
+      <i>
+      ( Wikipedia )
+      </i>
+</p>
 <br>
 <br>
 
@@ -74,19 +91,10 @@ _,m_train = X_train.shape
 ```
 <br>
 
-### What is in the data set?
-Images are represented digitally with pixel values ranging from 0 to 255, indicating the intensity of light or color. This is what the X data contains.  
-The Y data contains the actual number the image has (0-9).
-<br>
-<br>
-<p align="center">
-    <img width="729" alt="data set" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/aaa75673-954a-46a5-a1a0-661f914b2dea">
-</p>
-<br>
-<br>
-
 ### Why do we divide the X data sets by 255?
-When you divide all pixel values by 255 in the dataset ( what X data has ), you're performing a normalization step where all features (pixel values, in this case) will have a similar range of values, specifically between 0 and 1. It helps speed up gradient descent, reduces the chance of getting stuck in local optima, and that a feature of a number doesn't have a disproportionate importance.
+Images are represented digitally with pixel values ranging from 0 to 255, indicating the intensity of light or color. This is what the X data contains.  
+The Y data contains the actual number the image has (0-9). When you divide all pixel values by 255 in the dataset ( what X data has ), you're performing a normalization step where all features (pixel values, in this case) will have a similar range of values, specifically between 0 and 1. 
+It helps speed up gradient descent, reduces the chance of getting stuck in local optima, and that a feature of a number doesn't have a disproportionate importance.
 <br> 
 <br>
 <br>
@@ -102,8 +110,8 @@ w2: Weights for connections between the hidden layer's 10 neurons and the 10 out
 b2: Biases for the 10 neurons in the output layer. <br>
 <br>
 
-**Initializes the parameters for a simple neural network with one hidden layer. 
-It creates random weights (w1, w2) and biases (b1, b2) for both the input-to-hidden and hidden-to-output layer connections.**
+Initializes the parameters for a simple neural network with one hidden layer. 
+It creates random weights (w1, w2) and biases (b1, b2) for both the input-to-hidden and hidden-to-output layer connections.
 ```
 def init_params():
     # Input layer size (28x28 image)
@@ -135,7 +143,10 @@ More information: https://openaccess.thecvf.com/content_iccv_2015/papers/He_Delv
 <br>
 <br>
 <p align="center">
-  <img width="318" alt="HE ini" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/8b7884ad-c553-4883-ad82-28dbe02ca92c">
+  <img width="318" alt="HE ini" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/8b7884ad-c553-4883-ad82-28dbe02ca92c"> <br>
+  <i>
+    ( Naver )
+  </i>
 </p>
 <br>
 <br>
@@ -149,7 +160,10 @@ def ReLU(Z):
 ```
 <br>
 <p align="center">
-  <img width="397" alt="relU" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/2ee4aa11-826b-4b3c-938c-691bebb30977">
+  <img width="397" alt="relU" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/2ee4aa11-826b-4b3c-938c-691bebb30977"> <br>
+  <i>
+    ( LinkedIn )
+  </i>
 </p>
 <br>
 
@@ -231,14 +245,12 @@ def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
     db1 = 1 / m * np.sum(dZ1, 1)
     return dW1, db1, dW2, db2
 ```
-
 <br>
 <br>
 
 ## One Hot
 Converts a 1D array of integer labels (Y) into a 2D one-hot encoded matrix, 
 where each row corresponds to a class and each column to a sample, with 1 indicating the presence of a class for a sample.
-
 ```
 def one_hot(Y):
     # Creates 2d array of 0's
@@ -429,4 +441,14 @@ plot_confusion_matrix(Y_dev, Y_dev_pred, class_names)
 <p align="center">
  <img width="800" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/76b22eb3-8050-427e-9d5f-eabab4fcde5e>
 </p>
+<br>
+<br>
+
+## References
+Bourke, D. (2023, September). How to use non-linear functions in neural networks. LinkedIn. https://www.linkedin.com/posts/mrdbourke_machinelearning-datascience-neuralnetworks-activity-7107129007233515520-3rpF <br>
+Duif, M. (2020, January 10). Exploring How Neural Networks Work and Making Them Interactive. Medium. https://towardsdatascience.com/exploring-how-neural-networks-work-and-making-them-interactive-ed67adbf9283 <br>
+Wikipedia Contributors. (2019, February 22). MNIST database. Wikipedia; Wikimedia Foundation. https://en.wikipedia.org/wiki/MNIST_database <br>
+Zinc. (2019, June 19). [Summary] [PyTorch] Lab-09-2 Weight initialization. Blog.naver.com. https://blog.naver.com/hongjg3229/221564537122 <br>
+
+
 
