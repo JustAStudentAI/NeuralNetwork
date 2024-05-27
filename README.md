@@ -316,6 +316,7 @@ Gradient descent in machine learning is simply used to find the values of a func
 <p align="center">
  <img width="400" alt="grad des" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/7b9d385d-98c9-4016-b58f-5b8024c36476>
 </p>
+<br>
 
 ```
 def gradient_descent(X, Y, alpha, iterations):
@@ -355,9 +356,9 @@ https://www.simplilearn.com/tutorials/machine-learning-tutorial/cost-function-in
 <br>
 
 ### Training the model
-Calls gradient descent, passes the data sets with alpha = 0.10 and 500 iterations.
+Calls gradient descent, passes the data sets with alpha = 0.10 and 501 iterations.
 ```
-W1, b1, W2, b2, history = gradient_descent(X_train, Y_train, 0.10, 531)
+W1, b1, W2, b2, history = gradient_descent(X_train, Y_train, 0.10, 501)
 ```
 <br>
 <br>
@@ -378,6 +379,7 @@ test_prediction(1, W1, b1, W2, b2)
 <br>
 
 ## Visualize loss and accuracy
+This creates two subplots. The first subplot shows the training loss versus epochs, and the second subplot shows the training accuracy versus epochs. This function helps in understanding how the model's performance evolves during training by displaying the trends in loss and accuracy.
 ```
 def plot_history(history):
     epochs = range(1, len(history['loss']) + 1)
@@ -402,12 +404,13 @@ def plot_history(history):
 plot_history(history)
 ```
 <p align="center">
- <img width="400" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/de7561ed-0cc2-4f5c-8e03-08c7fda7c741>
+ <img width="1000" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/de7561ed-0cc2-4f5c-8e03-08c7fda7c741>
 </p>
 <br>
 <br>
 
 ## Confusion Matrix
+The confusion matrix compares the true labels to the predicted labels, showing the number of correct and incorrect predictions for each class. This function helps in understanding the model's performance across different classes and identifying any patterns of misclassification.
 ```
 def plot_confusion_matrix(Y_true, Y_pred, class_names):
     cm = confusion_matrix(Y_true, Y_pred)
@@ -424,6 +427,6 @@ class_names = [str(i) for i in range(10)]
 plot_confusion_matrix(Y_dev, Y_dev_pred, class_names)
 ```
 <p align="center">
- <img width="400" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/76b22eb3-8050-427e-9d5f-eabab4fcde5e>
+ <img width="800" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/76b22eb3-8050-427e-9d5f-eabab4fcde5e>
 </p>
 
