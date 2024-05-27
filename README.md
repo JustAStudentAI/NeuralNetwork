@@ -314,7 +314,7 @@ def get_accuracy(predictions, Y):
 Gradient Descent is an optimization algorithm for finding a local minimum of a differentiable function. 
 Gradient descent in machine learning is simply used to find the values of a function's parameters (coefficients) that minimize a cost function as far as possible.
 <p align="center">
- <img width="400" alt="grad des" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/7b9d385d-98c9-4016-b58f-5b8024c36476>
+ <img width="600" alt="grad des" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/7b9d385d-98c9-4016-b58f-5b8024c36476>
 </p>
 <br>
 
@@ -339,14 +339,14 @@ def gradient_descent(X, Y, alpha, iterations):
     return W1, b1, W2, b2, history
 ```
 <p align="center">
- <img width="400" alt="iteration ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/06730932-52bc-49b6-865c-ac485471f337>
+ <img width="600" alt="iteration ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/06730932-52bc-49b6-865c-ac485471f337>
 </p>
 <br>
 
 ### What is a loss / cost function?
 A loss / cost function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting
 <p align="center">
- <img width="400" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/d43e2c11-cb76-49d9-b493-5a6b259afc05>
+ <img width="500" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/d43e2c11-cb76-49d9-b493-5a6b259afc05>
 </p>
 <br>
 
