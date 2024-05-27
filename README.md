@@ -234,29 +234,11 @@ def forward_prop(w1, b1, w2, b2, X):
 <br>
 <br>
 
-
-## Backward Propagation
-Calculates the error from the output and distributes it back through the network layers. This helps in adjusting the model's parameters to reduce errors and improve accuracy during learning.
-```
-def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
-    one_hot_Y = one_hot(Y)
-    dZ2 = A2 - one_hot_Y
-    dW2 = 1 / m * dZ2.dot(A1.T)
-    db2 = 1 / m * np.sum(dZ2, 1)
-    dZ1 = W2.T.dot(dZ2) * ReLU_derivative(Z1)
-    dW1 = 1 / m * dZ1.dot(X.T)
-    db1 = 1 / m * np.sum(dZ1, 1)
-    return dW1, db1, dW2, db2
-```
-<br>
-<br>
-
 ## One Hot
 Converts a 1D array of integer labels (Y) into a 2D one-hot encoded matrix, 
 where each row corresponds to a class and each column to a sample, with 1 indicating the presence of a class for a sample.
 ```
 def one_hot(Y):
-    # Creates 2d array of 0's
     one_hot_Y = np.zeros((Y.size, Y.max() + 1))
     one_hot_Y[np.arange(Y.size), Y] = 1
     one_hot_Y = one_hot_Y.T
@@ -265,6 +247,21 @@ def one_hot(Y):
 <p align="center">
  <img width="500" alt="one hot" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/b408530e-c935-4336-b417-aafe3ae717b2>
 </p>
+<br>
+<br>
+
+## Backward Propagation
+Calculates the error from the output and distributes it back through the network layers. This helps in adjusting the model's parameters to reduce errors and improve accuracy during learning.
+```
+def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y, one_hot_Y):
+    dZ2 = A2 - one_hot_Y
+    dW2 = 1 / m * dZ2.dot(A1.T)
+    db2 = 1 / m * np.sum(dZ2, 1)
+    dZ1 = W2.T.dot(dZ2) * ReLU_derivative(Z1)
+    dW1 = 1 / m * dZ1.dot(X.T)
+    db1 = 1 / m * np.sum(dZ1, 1)
+    return dW1, db1, dW2, db2
+```
 <br>
 <br>
 
@@ -337,13 +334,13 @@ Gradient descent in machine learning is simply used to find the values of a func
 def gradient_descent(X, Y, alpha, iterations):
     W1, b1, W2, b2 = init_params()
     history = {'loss': [], 'accuracy': []}
+    one_hot_Y = one_hot(Y)
     
     for i in range(iterations):
         Z1, A1, Z2, A2 = forward_prop(W1, b1, W2, b2, X)
-        dW1, db1, dW2, db2 = backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y)
+        dW1, db1, dW2, db2 = backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y, one_hot_Y)
         W1, b1, W2, b2 = update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha)
-
-        # print some data every 20th iteration
+        
         if i % 20 == 0:
             loss = -np.mean(np.log(A2[Y, np.arange(m_train)]))
             accuracy = get_accuracy(get_predictions(A2), Y)
@@ -373,7 +370,7 @@ https://builtin.com/data-science/gradient-descent <br>
 https://www.simplilearn.com/tutorials/machine-learning-tutorial/cost-function-in-machine-learning <br>
 <br>
 
-### Training the model
+### Training the model                                  
 Calls gradient descent, passes the data sets with alpha = 0.10 and 501 iterations.
 ```
 W1, b1, W2, b2, history = gradient_descent(X_train, Y_train, 0.10, 501)
@@ -382,10 +379,15 @@ W1, b1, W2, b2, history = gradient_descent(X_train, Y_train, 0.10, 501)
 <br>
 
 ## Show prediction visuals
+Accuracy on dev dataset
 ```
-# shows predictions, add more if wanted 
+dev_predictions = make_predictions(X_dev, W1, b1, W2, b2)
+print("Dev data accuracy: ", get_accuracy(dev_predictions, Y_dev))
+```
+
+Prediction image example
+```
 test_prediction(0, W1, b1, W2, b2)
-test_prediction(1, W1, b1, W2, b2)
 ```
 <p align="center">
  <img width="400" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/1c9a3a56-e512-4966-9939-ebe1ff3c0e1a>
