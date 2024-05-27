@@ -24,25 +24,28 @@ This configuration allows the model to learn complex patterns efficiently, tailo
 <br>
 
 ## The imports:
+To download, type this into terminal: pip3 install numpy pandas scikit-learn seaborn
+
 ```
-import numpy as np               # math tool
-import pandas as pd              # analysis tool
-import matplotlib.pyplot as plt  # plotting tool to show numbers
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import sklearn
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
 ```
 <br>
 <br>
 
 ## Getting the data read in & set up:
+Data set is from kaggle https://www.kaggle.com/competitions/digit-recognizer
 ```
-# data set is from kaggle https://www.kaggle.com/competitions/digit-recognizer
 # set destination to where ever the saved train.csv file is
 data = pd.read_csv('/Users/Your_Name/Desktop/train.csv')
-# optional print
-# print(data.head())
 # change to numpy
 data = np.array(data)
 # optional print
-print(data)
+# print(data)
 ```
 <br>
 <br>
