@@ -37,7 +37,11 @@ import seaborn as sns
 <br>
 
 ### What is each import used for?
-to be finished~~~~~~~~~~
+NumPy : Efficient numerical operations on arrays ( linear algebra ).
+Pandas : Data manipulation and analysis ( CSV file ).
+Matplotlib : Creating and customizing visualizations ( plots and images ).
+scikit-learn : Machine learning tools and evaluation metrics ( confusion matrix )
+Seaborn : Statistical data visualization ( heatmap in confusion matrix ).
 <br>
 <br>
 
@@ -137,7 +141,6 @@ def init_params():
 
 ### What initialization is used?
 He initialization is used.  It helps avoid diminishing or exploding gradients during training by ensuring that the variance of the outputs of each layer remains controlled, thus making the network more likely to learn effectively.  
-Note: This was a random choice to use HE; multiplying by .05 instead would result in a ~2% loss of accuracy compared to HE initialization.
 
 More information: https://openaccess.thecvf.com/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf
 <br>
@@ -356,7 +359,7 @@ def gradient_descent(X, Y, alpha, iterations):
 <br>
 
 ### What is a loss / cost function?
-A loss / cost function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting
+A loss / cost function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting.  The cross-entropy loss formula is used in this project.
 <p align="center">
  <img width="500" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/d43e2c11-cb76-49d9-b493-5a6b259afc05> <br>
   <i>
