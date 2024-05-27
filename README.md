@@ -37,11 +37,11 @@ import seaborn as sns
 <br>
 
 ### What is each import used for?
-NumPy : Efficient numerical operations on arrays ( linear algebra ).
-Pandas : Data manipulation and analysis ( CSV file ).
-Matplotlib : Creating and customizing visualizations ( plots and images ).
-scikit-learn : Machine learning tools and evaluation metrics ( confusion matrix )
-Seaborn : Statistical data visualization ( heatmap in confusion matrix ).
+NumPy : Efficient numerical operations on arrays ( linear algebra ). <br>
+Pandas : Data manipulation and analysis ( CSV file ). <br>
+Matplotlib : Creating and customizing visualizations ( plots and images ). <br>
+scikit-learn : Machine learning tools and evaluation metrics ( confusion matrix ). <br>
+Seaborn : Statistical data visualization ( heatmap in confusion matrix ). <br>
 <br>
 <br>
 
