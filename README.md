@@ -361,7 +361,10 @@ def gradient_descent(X, Y, alpha, iterations):
 ### What is a loss / cost function?
 A loss / cost function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting
 <p align="center">
- <img width="500" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/d43e2c11-cb76-49d9-b493-5a6b259afc05>
+ <img width="500" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/d43e2c11-cb76-49d9-b493-5a6b259afc05> <br>
+  <i>
+    ( towardsdatascience.com )
+  </i>
 </p>
 <br>
 
@@ -450,6 +453,7 @@ plot_confusion_matrix(Y_dev, Y_dev_pred, class_names)
 ## References
 Bourke, D. (2023, September). How to use non-linear functions in neural networks. LinkedIn. https://www.linkedin.com/posts/mrdbourke_machinelearning-datascience-neuralnetworks-activity-7107129007233515520-3rpF <br>
 Duif, M. (2020, January 10). Exploring How Neural Networks Work and Making Them Interactive. Medium. https://towardsdatascience.com/exploring-how-neural-networks-work-and-making-them-interactive-ed67adbf9283 <br>
+Krzyk, Kamil. “Coding Deep Learning for Beginners — Linear Regression (Part 2): Cost Function.” Medium, 23 Aug. 2018, towardsdatascience.com/coding-deep-learning-for-beginners-linear-regression-part-2-cost-function-49545303d29f. <br>
 Wikipedia Contributors. (2019, February 22). MNIST database. Wikipedia; Wikimedia Foundation. https://en.wikipedia.org/wiki/MNIST_database <br>
 Zinc. (2019, June 19). [Summary] [PyTorch] Lab-09-2 Weight initialization. Blog.naver.com. https://blog.naver.com/hongjg3229/221564537122 <br>
 
