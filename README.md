@@ -248,7 +248,10 @@ def one_hot(Y):
     return one_hot_Y
 ```
 <p align="center">
- <img width="500" alt="one hot" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/b408530e-c935-4336-b417-aafe3ae717b2>
+ <img width="500" alt="one hot" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/b408530e-c935-4336-b417-aafe3ae717b2> <br>
+  <i>
+    ( towardsdatascience.com )
+  </i>
 </p>
 <br>
 <br>
@@ -459,6 +462,7 @@ plot_confusion_matrix(Y_dev, Y_dev_pred, class_names)
 Bourke, D. (2023, September). How to use non-linear functions in neural networks. LinkedIn. https://www.linkedin.com/posts/mrdbourke_machinelearning-datascience-neuralnetworks-activity-7107129007233515520-3rpF <br>
 Duif, M. (2020, January 10). Exploring How Neural Networks Work and Making Them Interactive. Medium. https://towardsdatascience.com/exploring-how-neural-networks-work-and-making-them-interactive-ed67adbf9283 <br>
 Krzyk, Kamil. “Coding Deep Learning for Beginners — Linear Regression (Part 2): Cost Function.” Medium, 23 Aug. 2018, towardsdatascience.com/coding-deep-learning-for-beginners-linear-regression-part-2-cost-function-49545303d29f. <br>
+Pramoditha, Rukshan. “Encoding Categorical Variables: One-Hot vs Dummy Encoding.” Medium, 16 Dec. 2021, towardsdatascience.com/encoding-categorical-variables-one-hot-vs-dummy-encoding-6d5b9c46e2db. <br>
 Wikipedia Contributors. (2019, February 22). MNIST database. Wikipedia; Wikimedia Foundation. https://en.wikipedia.org/wiki/MNIST_database <br>
 Zinc. (2019, June 19). [Summary] [PyTorch] Lab-09-2 Weight initialization. Blog.naver.com. https://blog.naver.com/hongjg3229/221564537122 <br>
 
