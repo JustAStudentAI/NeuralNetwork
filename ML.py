@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt  # plotting tool to show numbers
 
 # data set is from kaggle https://www.kaggle.com/competitions/digit-recognizer
 # set destination to where ever the saved train.csv file is
-data = pd.read_csv('/Users/Over Yonder/Desktop/train.csv')
+data = pd.read_csv('/Users/Your Name/Desktop/train.csv')
 data = np.array(data)
 # optional print
 print(data)
