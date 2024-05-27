@@ -61,7 +61,7 @@ and is also widely used for training and testing in the field of machine learnin
 <p align="center">
     <img width="700" alt="data set" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/f8a922d7-b548-44d7-9da7-3a22f517c081> <br>
       <i>
-      ( Wikipedia )
+      ( Wikipedia.org )
       </i>
 </p>
 <br>
@@ -145,7 +145,7 @@ More information: https://openaccess.thecvf.com/content_iccv_2015/papers/He_Delv
 <p align="center">
   <img width="318" alt="HE ini" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/8b7884ad-c553-4883-ad82-28dbe02ca92c"> <br>
   <i>
-    ( Naver )
+    ( Naver.com )
   </i>
 </p>
 <br>
@@ -162,7 +162,7 @@ def ReLU(Z):
 <p align="center">
   <img width="397" alt="relU" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/2ee4aa11-826b-4b3c-938c-691bebb30977"> <br>
   <i>
-    ( LinkedIn )
+    ( LinkedIn.com )
   </i>
 </p>
 <br>
@@ -192,7 +192,10 @@ def softmax(Z):
     return A
 ```
 <p align="center">
- <img width="500" alt="softmax" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/126d2562-9d82-436f-bc79-6c388f45c9bb">
+ <img width="500" alt="softmax" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/126d2562-9d82-436f-bc79-6c388f45c9bb"> <br>
+  <i>
+    ( math-salamanders.com )
+  </i>
 </p>
 <br>
 <br>
