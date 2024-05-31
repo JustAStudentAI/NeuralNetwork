@@ -394,6 +394,9 @@ dev_predictions = make_predictions(X_dev, W1, b1, W2, b2)
 print("Dev data accuracy: ", get_accuracy(dev_predictions, Y_dev))
 ```
 I've ran this and got ~92% accuracy on the dev data set with 601 iterations.
+<p align="center">
+ <img width="600" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/7a803604-439e-482b-b75d-5d377876629d>
+</p>
 
 Prediction image example
 ```
@@ -409,7 +412,7 @@ test_prediction(0, W1, b1, W2, b2)
 <br>
 
 ## Visualize loss and accuracy
-This creates two subplots. The first subplot shows the training loss versus epochs, and the second subplot shows the training accuracy versus epochs. This function helps in understanding how the model's performance evolves during training by displaying the trends in loss and accuracy.
+This creates two subplots. The first subplot shows the training loss versus epochs, and the second subplot shows the training accuracy versus epochs. This function helps in understanding how the model's performance evolves during training by displaying the trends in loss and accuracy. Epochs in the subplots refers to the number of times data was printed out ( every 20th iteration ).
 ```
 def plot_history(history):
     epochs = range(1, len(history['loss']) + 1)
@@ -434,7 +437,7 @@ def plot_history(history):
 plot_history(history)
 ```
 <p align="center">
- <img width="1000" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/de7561ed-0cc2-4f5c-8e03-08c7fda7c741>
+ <img width="1000" alt="ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/ac9a6e8a-0073-4608-8301-743a0a311c33>
 </p>
 <br>
 <br>
