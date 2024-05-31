@@ -6,7 +6,7 @@ from sklearn.metrics import confusion_matrix
 import seaborn as sns
 
 # Data loading and preprocessing
-data = pd.read_csv('/Users/Over Yonder/Desktop/train.csv')
+data = pd.read_csv('/Users/Your_Name/Desktop/train.csv')  # CHANGE TO YOUR ACCOUNT NAME
 data = np.array(data)
 
 m, n = data.shape
@@ -60,8 +60,7 @@ def one_hot(Y):
     one_hot_Y = one_hot_Y.T
     return one_hot_Y
 
-def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
-    one_hot_Y = one_hot(Y)
+def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y, one_hot_Y):
     dZ2 = A2 - one_hot_Y
     dW2 = 1 / m * dZ2.dot(A1.T)
     db2 = 1 / m * np.sum(dZ2, 1)
@@ -102,10 +101,11 @@ def get_accuracy(predictions, Y):
 def gradient_descent(X, Y, alpha, iterations):
     W1, b1, W2, b2 = init_params()
     history = {'loss': [], 'accuracy': []}
+    one_hot_Y = one_hot(Y)
     
     for i in range(iterations):
         Z1, A1, Z2, A2 = forward_prop(W1, b1, W2, b2, X)
-        dW1, db1, dW2, db2 = backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y)
+        dW1, db1, dW2, db2 = backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y, one_hot_Y)
         W1, b1, W2, b2 = update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha)
         
         if i % 20 == 0:
@@ -120,9 +120,16 @@ def gradient_descent(X, Y, alpha, iterations):
 # Training the model
 W1, b1, W2, b2, history = gradient_descent(X_train, Y_train, 0.10, 501)
 
+# Accuracy on dev dataset
+dev_predictions = make_predictions(X_dev, W1, b1, W2, b2)
+print("Dev data accuracy: ", get_accuracy(dev_predictions, Y_dev))
+
+# Testing predictions
+test_prediction(0, W1, b1, W2, b2)
+
 # Visualizing Loss and Accuracy
 def plot_history(history):
-    epochs = range(1, len(history['loss']) + 1)
+    epochs = range(1, len(history['loss']) + 1) 
     
     plt.figure(figsize=(14, 6))
     plt.subplot(1, 2, 1)
@@ -142,10 +149,6 @@ def plot_history(history):
     plt.show()
 
 plot_history(history)
-
-# Testing predictions
-test_prediction(0, W1, b1, W2, b2)
-test_prediction(1, W1, b1, W2, b2)
 
 # Confusion Matrix
 def plot_confusion_matrix(Y_true, Y_pred, class_names):
