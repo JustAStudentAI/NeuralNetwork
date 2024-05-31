@@ -124,7 +124,7 @@ W1, b1, W2, b2, history = gradient_descent(X_train, Y_train, 0.10, 501)
 def plot_history(history):
     epochs = range(1, len(history['loss']) + 1)
     
-    plt.figure(figsize=(14, 5))
+    plt.figure(figsize=(14, 6))
     plt.subplot(1, 2, 1)
     plt.plot(epochs, history['loss'], label='Training Loss')
     plt.title('Training Loss over Epochs')
