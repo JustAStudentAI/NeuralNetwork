@@ -332,7 +332,10 @@ def get_accuracy(predictions, Y):
 Gradient Descent is an optimization algorithm for finding a local minimum of a differentiable function. 
 Gradient descent in machine learning is simply used to find the values of a function's parameters (coefficients) that minimize a cost function as far as possible.
 <p align="center">
- <img width="600" alt="grad des" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/7b9d385d-98c9-4016-b58f-5b8024c36476>
+ <img width="600" alt="grad des" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/7b9d385d-98c9-4016-b58f-5b8024c36476> <br>
+  <i>
+    ( researchgate.net )
+  </i>
 </p>
 <br>
 
@@ -357,10 +360,7 @@ def gradient_descent(X, Y, alpha, iterations):
     return W1, b1, W2, b2, history
 ```
 <p align="center">
- <img width="600" alt="iteration ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/06730932-52bc-49b6-865c-ac485471f337> <br>
-  <i>
-    ( researchgate.net )
-  </i>
+ <img width="600" alt="iteration ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/06730932-52bc-49b6-865c-ac485471f337> 
 </p>
 <br>
 
@@ -393,6 +393,7 @@ Accuracy on dev dataset
 dev_predictions = make_predictions(X_dev, W1, b1, W2, b2)
 print("Dev data accuracy: ", get_accuracy(dev_predictions, Y_dev))
 ```
+I've ran this and got ~92% accuracy on the dev data set with 601 iterations.
 
 Prediction image example
 ```
@@ -413,7 +414,7 @@ This creates two subplots. The first subplot shows the training loss versus epoc
 def plot_history(history):
     epochs = range(1, len(history['loss']) + 1)
     
-    plt.figure(figsize=(14, 5))
+    plt.figure(figsize=(14, 6))
     plt.subplot(1, 2, 1)
     plt.plot(epochs, history['loss'], label='Training Loss')
     plt.title('Training Loss over Epochs')
