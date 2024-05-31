@@ -357,7 +357,10 @@ def gradient_descent(X, Y, alpha, iterations):
     return W1, b1, W2, b2, history
 ```
 <p align="center">
- <img width="600" alt="iteration ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/06730932-52bc-49b6-865c-ac485471f337>
+ <img width="600" alt="iteration ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/06730932-52bc-49b6-865c-ac485471f337> <br>
+  <i>
+    ( researchgate.net )
+  </i>
 </p>
 <br>
 
