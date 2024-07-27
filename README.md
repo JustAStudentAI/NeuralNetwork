@@ -1,5 +1,5 @@
 # NeuralNetwork
-This is a neural built from scratch, the purpose is to identify numbers 0-9 from a given image.  I used the MNIST dataset for this project, referenced as "train.csv". 
+This is a feedforward neural built from scratch, the purpose is to identify numbers 0-9 from a given image.  I used the MNIST dataset for this project, referenced as "train.csv". 
 Project was based off of Samson Zhang's youtube video building a Neural network from scratch. https://www.youtube.com/watch?v=w8yWXqWQYmU
 <br>
 <br>
@@ -18,7 +18,6 @@ The neural network is designed with the following architecture:
 - **Hidden Layer:** A single hidden layer with 30 neurons, utilizing ReLU activation functions to introduce non-linearity.
 - **Output Layer:** 10 neurons, representing 0-9 using a softmax activation function for multi-class classification.
 
-This configuration allows the model to learn complex patterns efficiently, tailored to the specific demands of the dataset.
 <br>
 <br>
 <br>
