@@ -105,11 +105,11 @@ It helps speed up gradient descent, reduces the chance of getting stuck in local
 
 ## Now we train the data:
 
-w1: Weights connecting the input layer ( 784 units is designed for something like the MNIST dataset of 28x28 pixel images ) to the hidden layer (with 10 neurons). <br>
+w1: Weights connecting the input layer ( 784 units is designed for something like the MNIST dataset of 28x28 pixel images ) to the hidden layer  ( with 30 neurons ). <br>
     
-b1: Biases for each of the 10 neurons in the hidden layer.<br>
+b1: Biases for each of the 30 neurons in the hidden layer.<br>
 
-w2: Weights for connections between the hidden layer's 10 neurons and the 10 output neurons. <br>
+w2: Weights for connections between the hidden layer's 30 neurons and the 10 output neurons. <br>
 
 b2: Biases for the 10 neurons in the output layer. <br>
 <br>
@@ -141,6 +141,7 @@ def init_params():
 
 ### What initialization is used?
 He initialization is used.  It helps avoid diminishing or exploding gradients during training by ensuring that the variance of the outputs of each layer remains controlled, thus making the network more likely to learn effectively.  
+We use this initialization by using np.random.randn(x,y) * standard deviation to get an x-by-y array of random numbers with the specified standard deviation ( He is used as the standard deviation ).
 
 More information: https://openaccess.thecvf.com/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf
 <br>
