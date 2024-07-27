@@ -102,7 +102,7 @@ It helps speed up gradient descent, reduces the chance of getting stuck in local
 <br>
 <br>
 
-## Now we train the data:
+## Training
 
 w1: Weights connecting the input layer ( 784 units is designed for something like the MNIST dataset of 28x28 pixel images ) to the hidden layer  ( with 30 neurons ). <br>
     
