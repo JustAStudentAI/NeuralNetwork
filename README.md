@@ -64,7 +64,7 @@ and is also widely used for training and testing in the field of machine learnin
 <p align="center">
     <img width="700" alt="data set" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/f8a922d7-b548-44d7-9da7-3a22f517c081> <br>
       <i>
-      ( Wikipedia.org )
+      ( wikipedia.org )
       </i>
 </p>
 <br>
@@ -125,12 +125,10 @@ def init_params():
     output = 10
 
     # Initialize weights and biases for the first layer
-    # He initialization: only consider fan-in (n_in)
     W1 = np.random.randn(n_hidden1, n_in) * np.sqrt(2. / n_in)
     b1 = np.zeros((n_hidden1, 1))  # Biases can be initialized to zeros
 
     # Initialize weights and biases for the second layer
-    # He initialization: only consider fan-in (n_hidden1)
     W2 = np.random.randn(output, n_hidden1) * np.sqrt(2. / n_hidden1)
     b2 = np.zeros((output, 1))  # Biases can be initialized to zeros
 
@@ -140,15 +138,15 @@ def init_params():
 
 ### What initialization is used?
 He initialization is used.  It helps avoid diminishing or exploding gradients during training by ensuring that the variance of the outputs of each layer remains controlled, thus making the network more likely to learn effectively.  
-We use this initialization by using np.random.randn(x,y) * standard deviation to get an x-by-y array of random numbers with the specified standard deviation ( He is used as the standard deviation ).
+We use this initialization by using np.random.randn(x,y) * standard deviation to get an x-by-y array of random numbers with the specified standard deviation ( He is used as the standard deviation ). This yeilds the variance in the picture below.
 
 More information: https://openaccess.thecvf.com/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf
 <br>
 <br>
 <p align="center">
-  <img width="318" alt="HE ini" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/8b7884ad-c553-4883-ad82-28dbe02ca92c"> <br>
+  <img width="318" alt="HE ini" src="https://github.com/user-attachments/assets/4f141590-e7df-4b9b-bd66-a1dcbe4d69cb"> <br>
   <i>
-    ( Naver.com )
+    ( numpyninja.com )
   </i>
 </p>
 <br>
@@ -165,7 +163,7 @@ def ReLU(Z):
 <p align="center">
   <img width="397" alt="relU" src="https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/2ee4aa11-826b-4b3c-938c-691bebb30977"> <br>
   <i>
-    ( LinkedIn.com )
+    ( linkedin.com )
   </i>
 </p>
 <br>
@@ -468,11 +466,12 @@ plot_confusion_matrix(Y_dev, Y_dev_pred, class_names)
 ## References
 Bourke, D. (2023, September). How to use non-linear functions in neural networks. LinkedIn. https://www.linkedin.com/posts/mrdbourke_machinelearning-datascience-neuralnetworks-activity-7107129007233515520-3rpF <br>
 Duif, M. (2020, January 10). Exploring How Neural Networks Work and Making Them Interactive. Medium. https://towardsdatascience.com/exploring-how-neural-networks-work-and-making-them-interactive-ed67adbf9283 <br>
+Kapoor, Namrata. “Weight Initialization Techniques-What Best Works for You.” Numpy Ninja, Numpy Ninja, 11 Dec. 2020, www.numpyninja.com/post/weight-initialization-techniques. <br>
 Krzyk, Kamil. “Coding Deep Learning for Beginners — Linear Regression (Part 2): Cost Function.” Medium, 23 Aug. 2018, towardsdatascience.com/coding-deep-learning-for-beginners-linear-regression-part-2-cost-function-49545303d29f. <br>
 OpenAI. ChatGPT. OpenAI, 2024. <br>
 Pramoditha, Rukshan. “Encoding Categorical Variables: One-Hot vs Dummy Encoding.” Medium, 16 Dec. 2021, towardsdatascience.com/encoding-categorical-variables-one-hot-vs-dummy-encoding-6d5b9c46e2db. <br>
 Wikipedia Contributors. (2019, February 22). MNIST database. Wikipedia; Wikimedia Foundation. https://en.wikipedia.org/wiki/MNIST_database <br>
-Zinc. (2019, June 19). [Summary] [PyTorch] Lab-09-2 Weight initialization. Blog.naver.com. https://blog.naver.com/hongjg3229/221564537122 <br>
+
 
 
 
