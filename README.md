@@ -22,7 +22,7 @@ The neural network is designed with the following architecture:
 <br>
 <br>
 
-## The imports:
+## The imports
 To download, type this into terminal: pip3 install numpy pandas scikit-learn seaborn
 
 ```
@@ -44,7 +44,7 @@ Seaborn : Statistical data visualization ( heatmap in confusion matrix ). <br>
 <br>
 <br>
 
-## Getting the data read in & set up:
+## Getting the data read in & set up
 Data set is from kaggle https://www.kaggle.com/competitions/digit-recognizer
 ```
 # set destination to where ever the saved train.csv file is
@@ -70,7 +70,7 @@ and is also widely used for training and testing in the field of machine learnin
 <br>
 <br>
 
-## Declaration and initialization of variables:
+## Declaration and initialization of variables
 ```
 # m = rows, n = columns + 1 (for label column)
 m,n = data.shape
@@ -178,7 +178,7 @@ def ReLU_derivative(Z):
 <br>
 <br>
 
-## Softmax:
+## Softmax
 The softmax function converts a vector of raw scores (often called logits) from the final layer of a neural network 
 into probabilities by performing two main steps: <br> <br>
     Exponentiation: It takes the exponential (e raised to the power) of each score. <br>
@@ -349,6 +349,7 @@ def gradient_descent(X, Y, alpha, iterations):
         W1, b1, W2, b2 = update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha)
         
         if i % 20 == 0:
+            # categorical cross-entropy loss formula
             loss = -np.mean(np.log(A2[Y, np.arange(m_train)]))
             accuracy = get_accuracy(get_predictions(A2), Y)
             history['loss'].append(loss)
@@ -362,15 +363,6 @@ def gradient_descent(X, Y, alpha, iterations):
 </p>
 <br>
 
-### What is a loss / cost function?
-A loss / cost function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting.  The categorical cross-entropy loss formula is used in this gradient descent method.  
-<p align="center">
- <img width="500" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/d43e2c11-cb76-49d9-b493-5a6b259afc05> <br>
-  <i>
-    ( towardsdatascience.com )
-  </i>
-</p>
-<br>
 
 More information: <br>
 https://builtin.com/data-science/gradient-descent <br> 
