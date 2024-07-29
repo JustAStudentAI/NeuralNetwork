@@ -152,7 +152,7 @@ More information: https://openaccess.thecvf.com/content_iccv_2015/papers/He_Delv
 <br>
 <br>
 
-## Rectified Linear Unit ( RelU )
+## Rectified Linear Unit ( ReLU )
 Goes through given matrix Z and returns the max when compared to 0,
 effectively replaces numbers <0 with 0.**
 ```
@@ -363,7 +363,7 @@ def gradient_descent(X, Y, alpha, iterations):
 <br>
 
 ### What is a loss / cost function?
-A loss / cost function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting.  The cross-entropy loss formula is used in this project.
+A loss / cost function is used to measure just how wrong the model is in finding a relation between the input and output. It tells you how badly your model is behaving/predicting.  The categorical cross-entropy loss formula is used in this gradient descent method.  
 <p align="center">
  <img width="500" alt="cost func" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/d43e2c11-cb76-49d9-b493-5a6b259afc05> <br>
   <i>
