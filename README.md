@@ -326,17 +326,6 @@ def get_accuracy(predictions, Y):
 <br>
 
 ## Gradient descent
-### What is gradient descent?
-Gradient Descent is an optimization algorithm for finding a local minimum of a differentiable function. 
-Gradient descent in machine learning is simply used to find the values of a function's parameters (coefficients) that minimize a cost function as far as possible.
-<p align="center">
- <img width="600" alt="grad des" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/7b9d385d-98c9-4016-b58f-5b8024c36476> <br>
-  <i>
-    ( researchgate.net )
-  </i>
-</p>
-<br>
-
 ```
 def gradient_descent(X, Y, alpha, iterations):
     W1, b1, W2, b2 = init_params()
@@ -360,6 +349,17 @@ def gradient_descent(X, Y, alpha, iterations):
 ```
 <p align="center">
  <img width="600" alt="iteration ss" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/06730932-52bc-49b6-865c-ac485471f337> 
+</p>
+<br>
+
+### What is gradient descent?
+Gradient Descent is an optimization algorithm for finding a local minimum of a differentiable function. 
+Gradient descent in machine learning is simply used to find the values of a function's parameters (coefficients) that minimize a cost function as far as possible.
+<p align="center">
+ <img width="600" alt="grad des" src=https://github.com/JustAStudentAI/NeuralNetwork/assets/132246011/7b9d385d-98c9-4016-b58f-5b8024c36476> <br>
+  <i>
+    ( researchgate.net )
+  </i>
 </p>
 <br>
 
